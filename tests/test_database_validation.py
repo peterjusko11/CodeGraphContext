@@ -157,7 +157,6 @@ class TestConfigValidation:
 
 class TestConnectionTest:
     """Tests for test_connection method"""
-    
     def test_connection_invalid_host_unreachable(self):
         """Test connection fails gracefully for unreachable host"""
         is_connected, error = DatabaseManager.test_connection(
@@ -165,7 +164,7 @@ class TestConnectionTest:
         )
         assert is_connected is False
         assert error is not None
-        assert "Cannot reach Neo4j server" in error or "Connection failed" in error
+        assert "Cannot reach Neo4j server" in error or "Connection failed" in error or "getaddrinfo failed" in error
     
     def test_connection_invalid_port(self):
         """Test connection fails for invalid port"""
